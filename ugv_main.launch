@@ -1,0 +1,32 @@
+<launch>
+
+	<!--THE CONTROL NODE IN UGV_SENSORS IS REQUIRED-->
+	
+	<!--ARGS TO PASS DOWN TO INCLUDED FILES-->
+	
+		<arg name="filter" default="0" 
+		doc="toggle signal filter" />
+		
+		<arg name="arduino" default="0" 
+		doc="switch to 1 if rduino is on" />
+	
+		<arg name="arduino_usb" default="/dev/ttyUSB0" 
+		doc="to change arduino usb" />
+	
+	
+	<!--INCLUDED FILES WHERE THE NODES ARE ACTUALLY CALLED-->
+
+	<include file="$(find fyp)/launch/ugv_sensors.launch" >
+		
+		<arg name="filter_on" value="$(arg filter)"/>
+		
+		<arg name="arduino_on" value="$(arg arduino)" />
+	
+		<arg name="arduinoUsb" value="$(arg arduino_usb)" />
+	
+	</include>
+	
+	<include file="$(find fyp)/launch/ugv_rosaria.launch" />
+
+
+</launch>

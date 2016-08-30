@@ -1,0 +1,13 @@
+<launch>
+
+<!--ROSARIA NODES-->	
+
+	<arg name="rosaria_usb" default="/dev/ttyUSB0" doc="Set Robot's USB port, such as ttyUSB1, when calling this roslaunch" />
+	
+	<group ns="rosaria_ugv">
+	
+		<node name="rosaria" pkg="rosaria" type="RosAria" args="_port:=$(arg rosaria_usb)" output="screen" launch-prefix="gnome-terminal --command" />
+		
+	</group>
+	
+</launch>
